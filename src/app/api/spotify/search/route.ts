@@ -15,7 +15,7 @@ async function getAccessToken() {
     });
     return response.data.access_token;
   } catch (error) {
-    console.error('Error fetching access token:', error.message);
+    console.error('Error fetching access token:', error);
     throw new Error('Unable to fetch access token');
   }
 }
