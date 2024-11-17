@@ -2,6 +2,18 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { getAccessToken } from '@/lib/getToken';
 
+// Define types for Spotify API response objects
+type Artist = {
+  name: string;
+};
+
+type Track = {
+  id: string;
+  name: string;
+  artists: Artist[];
+  preview_url: string | null;
+};
+
 export async function POST(req: Request) {
   return handleRequest(req);
 }
@@ -12,14 +24,20 @@ export async function GET(req: Request) {
   if (!trackId) {
     return NextResponse.json({ error: 'Missing "trackId" in query parameters' }, { status: 400 });
   }
-  return handleRequest({ json: async () => ({ trackId }) });
+  return handleRequest(trackId);
 }
 
-async function handleRequest(req: Request) {
-  const { trackId } = await req.json();
+async function handleRequest(reqOrTrackId: Request | string) {
+  let trackId: string;
 
-  if (!trackId) {
-    return NextResponse.json({ error: 'Missing "trackId"' }, { status: 400 });
+  if (typeof reqOrTrackId === 'string') {
+    trackId = reqOrTrackId;
+  } else {
+    const { trackId: bodyTrackId } = await reqOrTrackId.json();
+    if (!bodyTrackId) {
+      return NextResponse.json({ error: 'Missing "trackId"' }, { status: 400 });
+    }
+    trackId = bodyTrackId;
   }
 
   try {
@@ -63,10 +81,10 @@ async function handleRequest(req: Request) {
       }
     );
 
-    const recommendations = recommendationsResponse.data.tracks.map((track: any) => ({
+    const recommendations = recommendationsResponse.data.tracks.map((track: Track) => ({
       id: track.id,
       name: track.name,
-      artist: track.artists.map((artist: any) => artist.name).join(', '),
+      artist: track.artists.map((artist: Artist) => artist.name).join(', '),
       preview_url: track.preview_url,
     }));
 
