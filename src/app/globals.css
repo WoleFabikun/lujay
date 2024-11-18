@@ -79,7 +79,7 @@ body {
 }
 
 .gradient-bg {
-  background: linear-gradient(-45deg, #001f3f, #2f4f4f, #001f3f, #2f4f4f);
+  background: linear-gradient(-45deg, #0f365c, #374caa, #200352, #180648);
   background-size: 400% 400%;
   animation: gradient 25s ease infinite;
 }
@@ -129,7 +129,7 @@ body {
 }
 
 .bar {
-  background-color: #4caf50; /* Bar color */
+  background-color: #2f7bec; /* Bar color */
   width: 10px; /* Bar width */
   height: 40px; /* Initial bar height */
   animation: pulse 2.6s infinite ease-in-out;

@@ -49,7 +49,7 @@ export default function RecommendationResults({ data }: { data: Track[] }) {
                   <p className="text-sm text-gray-500">{track.artist}</p>
                 </div>
                 {track.preview_url && (
-                  <audio controls className="w-48">
+                  <audio controls className="w-60">
                     <source src={track.preview_url} type="audio/mpeg" />
                     Your browser does not support the audio element.
                   </audio>

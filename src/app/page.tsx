@@ -73,7 +73,7 @@ export default function SpotifyRecommendationApp() {
                     <p className="text-sm text-gray-500">{track.album}</p>
                     <p className="text-sm text-gray-500">Popularity: {track.popularity}</p>
                     {track.preview_url && (
-                  <audio controls className="w-48">
+                  <audio controls className="w-60">
                   <source src={track.preview_url} type="audio/mpeg" />
                   Your browser does not support the audio element.
                 </audio>

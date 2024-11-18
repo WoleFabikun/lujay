@@ -43,7 +43,7 @@ function RecommendationsContent() {
   }
 
   if (loading) {
-    return <p className="text-center">Loading recommendations...</p>;
+    return <p className="text-center text-white">Loading recommendations...</p>;
   }
 
   if (error) {
