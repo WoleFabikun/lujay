@@ -25,11 +25,8 @@
     "node-fetch": "^3.3.2",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "react-particles-js": "^3.6.0",
-    "react-tsparticles": "^2.12.2",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "tsparticles": "^3.5.0",
     "vercel": "^39.0.2"
   },
   "devDependencies": {
