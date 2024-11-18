@@ -59,7 +59,7 @@ function RecommendationsContent() {
 
 export default function RecommendationsPage() {
   return (
-    <Suspense fallback={<p className="text-center">Loading recommendations...</p>}>
+    <Suspense fallback={<p className="text-center text-white">Loading recommendations...</p>}>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <RecommendationsContent />
       </div>

@@ -73,14 +73,10 @@ export default function SpotifyRecommendationApp() {
                     <p className="text-sm text-gray-500">{track.album}</p>
                     <p className="text-sm text-gray-500">Popularity: {track.popularity}</p>
                     {track.preview_url && (
-                      <a
-                        href={track.preview_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
-                      >
-                        Preview Track
-                      </a>
+                  <audio controls className="w-48">
+                  <source src={track.preview_url} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
                     )}
                   </div>
                   <Button onClick={() => handleGetRecommendations(track.id)}>Get Recommendations</Button>
