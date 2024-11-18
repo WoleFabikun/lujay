@@ -4,7 +4,7 @@ import styles from "../styles/logo.module.css";
 
 const Logo = () => {
   return (
-    <Link href={"https://wolefabikun.com/"}>
+    <Link href={"/"}>
       <span className={styles.logo}>
         <Image src="/lubot.png" alt="Wole Fabikun" width={30} height={45} />
       </span>
