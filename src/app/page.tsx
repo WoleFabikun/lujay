@@ -23,7 +23,6 @@ export default function SpotifyRecommendationApp() {
   }
 
   const handleGetRecommendations = (trackId: string) => {
-    // Redirect to recommendations page with the trackId as a query parameter
     router.push(`/recommendations?trackId=${trackId}`)
   }
 
@@ -43,16 +42,16 @@ export default function SpotifyRecommendationApp() {
           <CardTitle>Search for a Song</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex space-x-2">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
             <Input
               type="text"
               placeholder="Enter song name"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleKeyPress} // Added key press event
+              onKeyDown={handleKeyPress}
               className="flex-grow"
             />
-            <Button onClick={handleSearch}>Search</Button>
+            <Button onClick={handleSearch} className="w-full sm:w-auto">Search</Button>
           </div>
         </CardContent>
       </Card>
@@ -66,20 +65,25 @@ export default function SpotifyRecommendationApp() {
           <CardContent>
             <div className="space-y-4">
               {searchResults.map((track, index) => (
-                <div key={index} className="flex items-start space-x-4">
+                <div key={index} className="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
                   <div className="flex-grow">
                     <h3 className="font-semibold">{track.name}</h3>
                     <p className="text-sm text-gray-500">{track.artists}</p>
                     <p className="text-sm text-gray-500">{track.album}</p>
                     <p className="text-sm text-gray-500">Popularity: {track.popularity}</p>
                     {track.preview_url && (
-                  <audio controls className="w-60">
-                  <source src={track.preview_url} type="audio/mpeg" />
-                  Your browser does not support the audio element.
-                </audio>
+                      <audio controls className="w-full sm:w-60">
+                        <source src={track.preview_url} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
                     )}
                   </div>
-                  <Button onClick={() => handleGetRecommendations(track.id)}>Get Recommendations</Button>
+                  <Button
+                    onClick={() => handleGetRecommendations(track.id)}
+                    className="w-full sm:w-auto"
+                  >
+                    Get Recommendations
+                  </Button>
                 </div>
               ))}
             </div>

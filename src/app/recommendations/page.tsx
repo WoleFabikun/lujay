@@ -39,7 +39,7 @@ function RecommendationsContent() {
   }, [trackId]);
 
   if (!trackId) {
-    return <p className="text-center">No track selected for recommendations.</p>;
+    return <p className="text-center text-white">No track selected for recommendations.</p>;
   }
 
   if (loading) {
@@ -53,7 +53,7 @@ function RecommendationsContent() {
   return recommendations ? (
     <RecommendationResults data={recommendations} />
   ) : (
-    <p className="text-center">No recommendations found.</p>
+    <p className="text-center text-white">No recommendations found.</p>
   );
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ParticleBackground from "@/components/particle-bg";
+import Header from "@/components/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -44,7 +46,7 @@ export default function RootLayout({
           </div>
 
           {/* Main Content */}
-          <div className="relative z-10">{children}</div>
+          <div className="relative z-10"><Header />{children}</div>
         </div>
       </body>
     </html>
