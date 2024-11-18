@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ParticleBackground from "@/components/particle-bg";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="gradient-bg relative min-h-screen bg-black overflow-hidden">
+          {/* Music Pulse Background */}
+          <div className="absolute inset-0 flex justify-center items-center z-0 pointer-events-none">
+            <div className="music-pulse">
+              {[...Array(10)].map((_, index) => (
+                <span key={index} className={`bar delay-${index}`}></span>
+              ))}
+            </div>
+          </div>
+          {/* Particle Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <ParticleBackground />
+          </div>
+
+          {/* Main Content */}
+          <div className="relative z-10">{children}</div>
+        </div>
       </body>
     </html>
   );
